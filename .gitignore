@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Large demo video files (too big for git)
+client/public/input/*.mp4
+client/public/input/*.webm
+client/public/input/*.mov
+client/dist/
