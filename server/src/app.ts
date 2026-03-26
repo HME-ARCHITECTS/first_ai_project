@@ -1,7 +1,10 @@
 import express from "express";
 import cors from "cors";
+import { authRouter } from "./routes/auth";
+import { camerasRouter } from "./routes/cameras";
 import { poiRouter } from "./routes/poi";
-import { sessionRouter } from "./routes/session";
+import { capturesRouter } from "./routes/captures";
+import { surveysRouter } from "./routes/surveys";
 
 const app = express();
 
@@ -23,7 +26,10 @@ app.get("/api/health", (_req, res) => {
 });
 
 // ─── Routes ─────────────────────────────────────────────────────────
-app.use("/api/sessions", sessionRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/cameras", camerasRouter);
 app.use("/api/pois", poiRouter);
+app.use("/api/captures", capturesRouter);
+app.use("/api/surveys", surveysRouter);
 
 export { app };

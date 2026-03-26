@@ -1,15 +1,14 @@
 import { Router, Request, Response } from "express";
-import { PointOfInterestSchema, type PointOfInterest } from "shared";
+import { ImageCaptureSchema, type ImageCapture } from "shared";
 import { authMiddleware } from "../middleware/authMiddleware";
 
 const router = Router();
 
-// In-memory store
-const pois: PointOfInterest[] = [];
+const captures: ImageCapture[] = [];
 
-// POST /api/pois — Add a Point of Interest (auth required)
+// POST /api/captures — Save a camera feed capture (auth required)
 router.post("/", authMiddleware, (req: Request, res: Response) => {
-  const result = PointOfInterestSchema.safeParse(req.body);
+  const result = ImageCaptureSchema.safeParse(req.body);
 
   if (!result.success) {
     res.status(400).json({
@@ -20,13 +19,8 @@ router.post("/", authMiddleware, (req: Request, res: Response) => {
     return;
   }
 
-  pois.push(result.data);
+  captures.push(result.data);
   res.status(201).json(result.data);
 });
 
-// GET /api/pois — List all POIs (auth required)
-router.get("/", authMiddleware, (_req: Request, res: Response) => {
-  res.json(pois);
-});
-
-export { router as poiRouter };
+export { router as capturesRouter };

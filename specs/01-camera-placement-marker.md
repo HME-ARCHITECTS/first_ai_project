@@ -300,7 +300,7 @@ graph TD
 
 **Aspect Ratio:** Maintained via CSS `aspect-ratio: 16/9` with `object-fit: contain`.
 
-**Stream Note:** For demo purposes, use a static placeholder image (`/public/demo-camera-feed.jpg`). In production, the `streamUrl` from the auto-detected camera is used.
+**Stream Note:** For demo purposes, place any `.mp4` file in `client/public/input/` and render it via a `<video>` element with `autoPlay`, `loop`, `muted`, and `playsInline` attributes. In production, the `streamUrl` from the auto-detected camera is used.
 
 ---
 
